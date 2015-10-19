@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Dennis_Bellinkx_WPF_taak_controls.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525" WindowState="Maximized" Background="Black" Loaded="init">
+        Title="MainWindow" Height="350" Width="525" WindowState="Maximized" Background="Black" Loaded="init" SizeChanged="recalculateFields" MinHeight="600" MinWidth="1200">
     
     <DockPanel LastChildFill="True">
         <Grid DockPanel.Dock="bottom" Height="50">

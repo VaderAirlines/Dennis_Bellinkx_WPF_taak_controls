@@ -79,10 +79,7 @@ namespace Dennis_Bellinkx_WPF_taak_controls {
         private void initFields() {
             availableImageQueue = new Queue<string>(availableImages);
 
-            marqueeContainerLeft = grdMarquee.TranslatePoint(new Point(0, 0), this).X;
-            double grdWidth = grdMarquee.ActualWidth;
-            double tbkWidth = tbkMarquee.ActualWidth;
-            marqueeContainerRight = grdWidth - tbkWidth;
+            getMarqueeContainerWidth();
 
             imageTimer = new Timer(5000);
             imageTimer.Elapsed += changeCenterImageSource;
@@ -94,6 +91,11 @@ namespace Dennis_Bellinkx_WPF_taak_controls {
             dateTimeTimer.Elapsed += displayDateTime;
 
             tbkCurrentUser.Text = Environment.UserName;
+        }
+
+        private void recalculateFields(object sender, SizeChangedEventArgs e) {
+            getMarqueeContainerWidth();
+            tbkMarquee.Margin = new Thickness(0, 0, 0, 0);
         }
 
 
@@ -132,6 +134,13 @@ namespace Dennis_Bellinkx_WPF_taak_controls {
             availableImageQueue.Enqueue(topImage);
 
             return topImage;
+        }
+
+        private void getMarqueeContainerWidth() {
+            marqueeContainerLeft = grdMarquee.TranslatePoint(new Point(0, 0), this).X;
+            double grdWidth = grdMarquee.ActualWidth;
+            double tbkWidth = tbkMarquee.ActualWidth;
+            marqueeContainerRight = grdWidth - tbkWidth;
         }
 
     }
